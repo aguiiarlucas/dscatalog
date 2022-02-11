@@ -1,3 +1,4 @@
+
 package com.devsuperior.dscatalog.dto;
 
 import com.devsuperior.dscatalog.entities.Category;
