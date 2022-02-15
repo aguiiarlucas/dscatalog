@@ -42,6 +42,7 @@ public class ProductService {
         return new ProductDTO(entity, entity.getCategories());
     }
 
+    @Transactional
     public ProductDTO insert(ProductDTO dto) {
         Product entity = new Product();
         copyDtoToEntity(dto,entity);
@@ -62,6 +63,7 @@ public class ProductService {
         }
 
     }
+
 
     private void copyDtoToEntity(ProductDTO dto, Product entity) {
 
