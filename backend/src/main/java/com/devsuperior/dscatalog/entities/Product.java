@@ -1,11 +1,6 @@
 package com.devsuperior.dscatalog.entities;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
@@ -19,11 +14,11 @@ import java.util.Set;
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
     @Column(columnDefinition = "TEXT")
     private String description;
     private Double price;
@@ -32,17 +27,22 @@ public class Product implements Serializable {
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant date;
 
+    @ManyToMany
+    @JoinTable(name="tb_product_category", joinColumns = @JoinColumn(name= "product_id"),
+            inverseJoinColumns = @JoinColumn(name="category_id"))
+    Set<Category> categories = new HashSet<>();
+
     public Product() {
+
     }
 
-    public Product(Long id, String name, String description, Double price, String imgUrl, Instant date) {
+    public Product(Long id, String name, String description ,Double price, String imgUrl, Instant date) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.imgUrl = imgUrl;
         this.date = date;
-
     }
 
     public Long getId() {
@@ -60,6 +60,7 @@ public class Product implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public String getDescription() {
         return description;
@@ -98,23 +99,23 @@ public class Product implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return id.equals(product.id);
-    }
-
-    @Override
     public int hashCode() {
         return Objects.hash(id);
     }
 
-    @ManyToMany
-    @JoinTable(name = "tb_product_category",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
-    Set<Category> categories = new HashSet<>();
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Product other = (Product) obj;
+        return Objects.equals(id, other.id);
+    }
+
+
 
 
 }
