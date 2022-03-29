@@ -37,7 +37,6 @@ public class ProductRepositoryTests {
 
     }
 
-
     @Test
     public void findByIdShouldReturnNonEmptyOptionalWhenIdExists(){
          Optional<Product>result = repository.findById(existingId);
