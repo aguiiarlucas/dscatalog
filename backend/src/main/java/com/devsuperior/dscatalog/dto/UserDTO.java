@@ -5,6 +5,8 @@ import com.devsuperior.dscatalog.entities.User;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,12 +15,13 @@ public class UserDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Required field")
     private String firstName;
     private String lastName;
+    @Email(message = "Please, enter a valid email")
     private String email;
 
     Set<RoleDTO> roles = new HashSet<>();
-
     public UserDTO() {
     }
 
