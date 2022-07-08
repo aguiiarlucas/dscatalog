@@ -7,10 +7,11 @@ import java.util.Objects;
 
 public class RoleDTO implements Serializable {
     private static final long serialVersionUID = 1L;
+
     private Long id;
     private String authority;
 
-    public RoleDTO() {
+    public  RoleDTO(){
     }
 
     public RoleDTO(Long id, String authority) {
@@ -18,11 +19,9 @@ public class RoleDTO implements Serializable {
         this.authority = authority;
     }
     public RoleDTO(Role role) {
-     super();
-     id= this.getId();
-     authority= this.getAuthority();
+        id=role.getId();
+        authority=role.getAuthority();
     }
-
 
     public Long getId() {
         return id;
@@ -41,6 +40,7 @@ public class RoleDTO implements Serializable {
     }
 
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -54,3 +54,5 @@ public class RoleDTO implements Serializable {
         return Objects.hash(getId());
     }
 }
+
+

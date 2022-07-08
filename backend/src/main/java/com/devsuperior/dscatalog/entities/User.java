@@ -15,6 +15,7 @@ public class User implements Serializable {
     private Long id;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
     private String email;
     private String password;
 
@@ -26,12 +27,13 @@ public class User implements Serializable {
 
     public User() {
     }
-
-    public User(Long id, String firstName, String email, String password) {
+    public User(Long id, String firstName, String lastName, String email, String password, Set<Role> roles) {
         this.id = id;
         this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -76,6 +78,10 @@ public class User implements Serializable {
 
     public Set<Role> getRoles() {
         return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
