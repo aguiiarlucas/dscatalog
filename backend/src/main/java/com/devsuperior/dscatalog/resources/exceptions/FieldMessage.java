@@ -19,14 +19,17 @@ public class FieldMessage implements Serializable {
     }
 
     public void setFieldName(String fieldName) {
+
         this.fieldName = fieldName;
     }
 
     public String getMessage() {
+
         return message;
     }
 
     public void setMessage(String message) {
+
         this.message = message;
     }
 }
