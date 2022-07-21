@@ -1,23 +1,15 @@
 package com.devsuperior.dscatalog.dto;
 
+import com.devsuperior.dscatalog.entities.Category;
+
 import java.io.Serializable;
 
-
-import com.devsuperior.dscatalog.entities.Category;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
-@Data
-@EqualsAndHashCode
 
 public class CategoryDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Long id;
     private String name;
-
 
     public CategoryDTO() {
 
@@ -35,5 +27,19 @@ public class CategoryDTO implements Serializable {
 
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
