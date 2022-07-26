@@ -1,14 +1,11 @@
 package com.devsuperior.dscatalog.services;
 
-import com.devsuperior.dscatalog.dto.CategoryDTO;
 import com.devsuperior.dscatalog.dto.RoleDTO;
 import com.devsuperior.dscatalog.dto.UserDTO;
 import com.devsuperior.dscatalog.dto.UserInsertDTO;
-import com.devsuperior.dscatalog.entities.Category;
 import com.devsuperior.dscatalog.entities.Role;
 import com.devsuperior.dscatalog.entities.User;
 import com.devsuperior.dscatalog.exceptions.ResourceNotFoundException;
-import com.devsuperior.dscatalog.repositories.CategoryRepository;
 import com.devsuperior.dscatalog.repositories.RoleRepository;
 import com.devsuperior.dscatalog.repositories.UserRepository;
 import com.devsuperior.dscatalog.services.exceptions.DatabaseException;
@@ -31,11 +28,6 @@ import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
-<<<<<<< HEAD
-=======
-
-    private static Logger logger = LoggerFactory.getLogger(UserService.class);
->>>>>>> origin/main
 
     private static Logger logger = LoggerFactory.getLogger(UserService.class);
     @Autowired
@@ -102,24 +94,17 @@ public class UserService implements UserDetailsService {
             throw new DatabaseException("Integrity violation");
         }
     }
-<<<<<<< HEAD
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = repository.findByEmail(username);
-        if(user == null){
+        if(user ==null){
             logger.error("User not found:" +username);
-=======
-
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = repository.findByEmail(username);
-        if( user != null){
-            logger.error("User not found :"+ username);
->>>>>>> origin/main
             throw new UsernameNotFoundException("Email not found");
         }
         logger.info("User found: "+ username);
-        return user;
+        return (UserDetails) user;
     }
 }
+
+

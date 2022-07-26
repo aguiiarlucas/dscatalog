@@ -48,7 +48,7 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
-<<<<<<< HEAD
+
 
         <!-- ... other dependency elements ... -->
         <dependency>
@@ -63,8 +63,7 @@
             <optional>true</optional>
         </dependency>
 
-=======
->>>>>>> origin/main
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
