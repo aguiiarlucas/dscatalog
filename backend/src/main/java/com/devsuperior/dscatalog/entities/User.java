@@ -13,7 +13,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
+<<<<<<< HEAD
 @Table(name = "tb_user")
+=======
+@Table(name="tb_user")
+>>>>>>> origin/main
 public class User implements UserDetails, Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -77,9 +81,14 @@ public class User implements UserDetails, Serializable {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+<<<<<<< HEAD
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.getAuthority()))
                 .collect(Collectors.toList());
+=======
+      return  roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority()))
+              .collect(Collectors.toList());
+>>>>>>> origin/main
     }
 
     public String getPassword() {
@@ -88,7 +97,11 @@ public class User implements UserDetails, Serializable {
 
     @Override
     public String getUsername() {
+<<<<<<< HEAD
         return email;
+=======
+            return email;
+>>>>>>> origin/main
     }
 
     @Override

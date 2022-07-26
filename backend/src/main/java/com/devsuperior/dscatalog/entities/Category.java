@@ -1,6 +1,5 @@
 package com.devsuperior.dscatalog.entities;
 
-import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -14,17 +13,18 @@ import java.util.Set;
 @Entity
 @Table(name = "tb_category")
 public class Category implements Serializable {
-    private static final  long serialVersionUID =1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id ;
-    private String name ;
+    private Long id;
+    private String name;
 
     @ManyToMany(mappedBy = "categories")
-    private Set<Product>products = new HashSet<>();
+    private Set<Product> products = new HashSet<>();
 
-    public Category() {}
+    public Category() {
+    }
 
     public Category(Long id, String name) {
         this.id = id;
@@ -55,11 +55,11 @@ public class Category implements Serializable {
         return products;
     }
 
-    @Getter
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private  Instant createdAt;
 
-    @Getter
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant createdAt;
+
+
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant updateAt;
 

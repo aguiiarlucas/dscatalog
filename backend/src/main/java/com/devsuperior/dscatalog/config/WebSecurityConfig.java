@@ -17,22 +17,35 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
     @Autowired
     private UserDetailsService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+<<<<<<< HEAD
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder);
+=======
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+>>>>>>> origin/main
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/actuator/**");
     }
+<<<<<<< HEAD
     @Override
     @Bean
+=======
+
+    @Bean
+    @Override
+>>>>>>> origin/main
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
